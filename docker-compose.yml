@@ -3,27 +3,28 @@ services:
     image: postgres
     container_name: animals-game
     volumes:
-      - ./db/user.sql:/docker-entrypoint-initdb.d/user.sql
+      - ./internal/adapter/repository/db/user.sql:/docker-entrypoint-initdb.d/user.sql
     environment:
       POSTGRES_PASSWORD: "animals"
     ports:
       - "5432:5432"
 
-  mongo:
-    image: mongo
-    restart: always
-    container_name: animals-mongo
-    environment:
-      MONGO_INITDB_ROOT_USERNAME: bicheiro
-      MONGO_INITDB_ROOT_PASSWORD: animals
+  #mongo:
+  #  image: mongo
+  #  restart: always
+  #  container_name: animals-mongo
+  #  environment:
+  #    MONGO_INITDB_ROOT_USERNAME: bicheiro
+  #     MONGO_INITDB_ROOT_PASSWORD: animals
 
-  mongo-express:
-    image: mongo-express
-    container_name: animals-mong-express
-    restart: always
-    ports:
-      - 8081:8081
-    environment:
-      ME_CONFIG_MONGODB_ADMINUSERNAME: bicheiro
-      ME_CONFIG_MONGODB_ADMINPASSWORD: animals
-      ME_CONFIG_MONGODB_URL: mongodb://root:example@mongo:27017/
+ # mongo-express:
+    #image: mongo-express
+    #container_name: animals-mong-express
+    #restart: always
+    
+    #ports:
+     # - 8081:8081
+    #environment:
+     # ME_CONFIG_MONGODB_ADMINUSERNAME: bicheiro
+    #  ME_CONFIG_MONGODB_ADMINPASSWORD: animals
+   #   ME_CONFIG_MONGODB_URL: mongodb://root:example@mongo:27017/
